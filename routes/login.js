@@ -10,7 +10,8 @@ router.post('/', (req, res, next) => {
   User.findOne({email: req.body.email}).then(function(user) {
     if (!user) return res.json({error: 'user not found'})
     if (!user.comparePassword(req.body.password, user.password)) return res.json({error: 'Email or password is invalid'})
-    return res.json({success: true})
+    const token = user.generateJWT({email: req.body.email})
+    return res.json({success: true, token: token})
   })
 })
 

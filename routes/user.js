@@ -26,5 +26,13 @@ router.post('/', (req, res, next) => {
   })
 })
 
+let verified = function(req, res, next) {
+  console.log(req.authorization)
+  next()
+}
+
+router.get('/:id', verified, (req, res) => {
+  console.log(req.params.id)
+})
 
 module.exports = router
