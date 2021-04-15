@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const Schema = mongoose.Schema
+const { Schema } = mongoose
 const HASH_ROUND = 10
 const SECRET_KEY = 'mykey'
 
@@ -36,4 +36,5 @@ UserSchema.methods.generateJWT = function(payload) {
   return jwt.sign(payload, SECRET_KEY, option)
 }
 
-mongoose.model('User', UserSchema)
+const User = mongoose.model('User', UserSchema)
+module.exports = User
