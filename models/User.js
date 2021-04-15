@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const SECRET_KEY = require('../config/jwt')
 const Schema = mongoose.Schema
 const HASH_ROUND = 10
+const SECRET_KEY = 'mykey'
 
 const UserSchema = new Schema({
   username: String,
@@ -23,7 +23,6 @@ UserSchema.methods.comparePassword = function (myPassword, hashPassword) {
 
 UserSchema.methods.toAuthJSON = function () {
   return {
-    id: this._id,
     username: this.username,
     email: this.email,
     isAdmin: this.isAdmin
@@ -32,7 +31,7 @@ UserSchema.methods.toAuthJSON = function () {
 
 UserSchema.methods.generateJWT = function(payload) {
   const option = {
-    expiresIn: 600 * 60,
+    expiresIn: 60 * 60,
   }
   return jwt.sign(payload, SECRET_KEY, option)
 }
