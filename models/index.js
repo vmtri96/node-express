@@ -1,3 +1,4 @@
-const User = require('./user')
+import {User} from './user.js'
+import {Category} from './category.js'
 
-module.exports = { User }
+export { User, Category }

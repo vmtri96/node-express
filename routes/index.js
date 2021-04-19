@@ -1,6 +1,8 @@
-const router = require('express').Router()
-const userRouter = require('./user.js')
-const loginRouter = require('./login')
+import express from 'express'
+const router = express.Router()
+import { router as userRouter } from './user.js'
+import { router as loginRouter } from './login.js'
+import { router as categoryRouter } from './category.js'
 
 router.get('/', (req, res) => {
   res.send('Hello world')
@@ -8,6 +10,7 @@ router.get('/', (req, res) => {
 
 router.use('/user', userRouter)
 router.use('/login', loginRouter)
+router.use('/category', categoryRouter)
 
 router.use(function(req, res, next) {
   let err = new Error('Not Found');
@@ -15,4 +18,4 @@ router.use(function(req, res, next) {
   next(err);
 });
 
-module.exports = router
+export { router }

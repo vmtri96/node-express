@@ -1,11 +1,11 @@
-const express = require('express')
-const jwt = require('jsonwebtoken')
-const userController = require('../controllers/userController')
+import express from 'express'
+import jwt from 'jsonwebtoken'
+import { userController } from '../controllers/userController.js'
 const router = express.Router()
-let mongoose = require('mongoose')
+import mongoose from 'mongoose'
 let ObjectId = mongoose.Types.ObjectId
 let User = mongoose.model('User')
-const SECRET_KEY = require('../config/jwt')
+import { SECRET_KEY } from '../config/jwt.js'
 
 router.post('/', userController.post)
 
@@ -25,4 +25,4 @@ router.put('/:id', verified, userController.update)
 router.post('/:id', verified, userController.delete)
 router.get('/', userController.home)
 
-module.exports = router
+export { router }

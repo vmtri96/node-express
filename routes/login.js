@@ -1,5 +1,6 @@
-const router = require('express').Router()
-const mongoose = require('mongoose')
+import express from 'express'
+const router = express.Router()
+import mongoose from 'mongoose'
 const User = mongoose.model('User')
 
 router.post('/', (req, res, next) => {
@@ -15,4 +16,4 @@ router.post('/', (req, res, next) => {
   })
 })
 
-module.exports = router
+export { router }

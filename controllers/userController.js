@@ -1,5 +1,5 @@
-const db = require('../models')
-const mongoose = require('mongoose')
+import { User as db } from '../models/index.js'
+import mongoose from 'mongoose'
 const { ObjectId } = mongoose.Types
 
 const userController = {}
@@ -53,4 +53,4 @@ userController.home = (req, res) => {
   res.send('User home page')
 }
 
-module.exports = userController
+export { userController }

@@ -1,3 +1,3 @@
 const SECRET_KEY = 'mykey'
 
-module.exports = SECRET_KEY
+export { SECRET_KEY }
