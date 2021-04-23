@@ -6,6 +6,7 @@ const verified = (req, res, next) => {
   let token = req.headers.authorization.slice(7)
   try {
     let decoded = jwt.verify(token, SECRET_KEY)
+    req.email = decoded.email
     next()
   } catch (err) {
     return res.json({message: err})
